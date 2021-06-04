@@ -336,10 +336,16 @@ module Rake
     private :transform_comments
 
     # Get the first sentence in a string. The sentence is terminated
-    # by the first period, exclamation mark, or the end of the line.
+    # by the first period or the end of the line.
     # Decimal points do not count as periods.
     def first_sentence(string)
-      string.split(/(?<=\w)(\.|!)[ \t]|(\.$|!)|\n/).first
+      # string.split(/(?<=\w)(\.|!)[ \t]|(\.$|!)|\n/).first
+      # string.split(/(?<=\w)(\.|!)[ \t]|(\.$|!)|\n/).first
+      # string.split(/(?<=\w)(\.)[ \t]|(\.$)|\n/).first
+      # string.slice(/[^\n]+/)
+      # string.slice(/^.*?[\.!\?](?:\s|$)/)
+      # string.slice(/^.*?[.!?](?:\s|$)(?!.*\))/).strip
+      string.slice(/\A.*?[.!?](?=\s[A-Z]|\s?$)(?!.*\))/).slice(/\A(.*?)[\.]?$/, 1) # Passed!
     end
     private :first_sentence
 

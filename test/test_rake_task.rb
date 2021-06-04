@@ -409,7 +409,13 @@ class TestRakeTask < Rake::TestCase # :nodoc:
   def test_comments_with_sentences_exclamation_mark
     desc "An exclamation mark! Comment."
     t = task(:t, :name, :rev)
-    assert_equal "An exclamation mark", t.comment
+    assert_equal "An exclamation mark!", t.comment
+  end
+
+  def test_comments_with_sentences_exclamation_mark_for_alert
+    desc "Overwrite files; dangerous!! Attention!"
+    t = task(:t, :name, :rev)
+    assert_equal "Overwrite files; dangerous!!", t.comment
   end
 
   def test_comments_with_many_periods
