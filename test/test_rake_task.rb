@@ -400,6 +400,12 @@ class TestRakeTask < Rake::TestCase # :nodoc:
     assert_equal "A Comment", t.comment
   end
 
+  def test_comments_with_empty
+    desc ""
+    t = task(:t, :name, :rev)
+    assert_equal "", t.comment
+  end
+
   def test_comments_with_sentences_period
     desc "Comment 1. Comment 2."
     t = task(:t, :name, :rev)

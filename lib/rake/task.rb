@@ -345,7 +345,8 @@ module Rake
       # string.slice(/[^\n]+/)
       # string.slice(/^.*?[\.!\?](?:\s|$)/)
       # string.slice(/^.*?[.!?](?:\s|$)(?!.*\))/).strip
-      string.slice(/\A.*?[.!?](?=\s[A-Z]|\s?$)(?!.*\))/).slice(/\A(.*?)[\.]?$/, 1) # Passed!
+      # string.slice(/\A.*?[.!?](?=\s[A-Z]|\s?$)(?!.*\))/).slice(/\A(.*?)[\.]?$/, 1) # Passed!
+      # string.slice(/\A.*?[.!?](?=\s[A-Z]|\s?$)(?!.*\))/)
     end
     private :first_sentence
 
