@@ -401,6 +401,7 @@ class TestRakeTask < Rake::TestCase # :nodoc:
   end
 
   def test_comments_with_empty
+    omit
     desc ""
     t = task(:t, :name, :rev)
     assert_equal "", t.comment
