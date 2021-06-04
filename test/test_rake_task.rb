@@ -400,6 +400,13 @@ class TestRakeTask < Rake::TestCase # :nodoc:
     assert_equal "A Comment", t.comment
   end
 
+  def test_comments_with_empty
+    omit
+    desc ""
+    t = task(:t, :name, :rev)
+    assert_equal "", t.comment
+  end
+
   def test_comments_with_sentences_period
     desc "Comment 1. Comment 2."
     t = task(:t, :name, :rev)
@@ -409,7 +416,13 @@ class TestRakeTask < Rake::TestCase # :nodoc:
   def test_comments_with_sentences_exclamation_mark
     desc "An exclamation mark! Comment."
     t = task(:t, :name, :rev)
-    assert_equal "An exclamation mark", t.comment
+    assert_equal "An exclamation mark!", t.comment
+  end
+
+  def test_comments_with_sentences_exclamation_mark_for_alert
+    desc "Overwrite files; dangerous!! Attention!"
+    t = task(:t, :name, :rev)
+    assert_equal "Overwrite files; dangerous!!", t.comment
   end
 
   def test_comments_with_many_periods
